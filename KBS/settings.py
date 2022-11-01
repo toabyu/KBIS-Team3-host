@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+# Names: Toa Pita, Dallin Duke, Emily Reyes, Mason Hunter
+# Section: 003
+# Project Description: A useful website to serve as a class reference for students in the core.
+
 
 from pathlib import Path
 
