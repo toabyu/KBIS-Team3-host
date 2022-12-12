@@ -85,6 +85,7 @@ def manageArticles(request):
     articles = Article.objects.all()
     
     context = {
+        'title': 'Manage All Articles',
         'articles': articles
     }
 
@@ -104,6 +105,7 @@ def manageClassArticles(request, classID):
     articles = Article.objects.all().filter(classID=classID)
     
     context = {
+        'title': f'Manage {classID} Articles',
         'classID': classID,
         'articles': articles
     }
