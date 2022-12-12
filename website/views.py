@@ -31,10 +31,12 @@ def content(request):
 def viewClass(request, classID):
     #This will show a table that correspods with the class with id = "+classID
     data = Article.objects.filter(classID=classID.upper()).order_by("title")
+    # set context
     context = {
         'title':"View "+classID.upper()+" Articles",
         'data': data
     }
+    # return the page
     return render(request, 'website/content.html', context)
 
 # page to render articles
@@ -80,20 +82,37 @@ def addArticle(request):
         article.author = author
         article.title = request.POST["title"].lower()
         article.description = request.POST["description"]
+        # article.classID = request.POST["classID"].upper()
+        # save the article
+        article.save()
         # split up the text by paragraph.
         array = request.POST["content"].split("\n")
         for i in array:
+            # loop through each paragraph
+            # add paragraph
             p = Paragraph()
+            # set the content to the text
             p.content = i
+            # add the paragraph to the article(by setting the id)
             p.article = article
+            # save it
             p.save()
+        # save the article
         article.save()
+        # return the article viewArticle
         return viewArticle(request,article.id)
 
 # Allow auth user to add a specific class related article
 def addClassArticle(request,classID):
     #This page will allow an authorized user to create a new article with the classID preset to "+classID
-    return render(request, 'website/addArticle.html')
+    if request.method == "GET":
+        context = {
+            "classID":classID.upper()
+        }
+        return render(request, 'website/addArticle.html',context)
+    else:
+        # add the article and return the page
+        return addArticle(request)
 
 # Allow auth user to edit articles
 def editArticle(request,articleID):
@@ -116,7 +135,7 @@ def manageArticles(request):
         'title': 'Manage All Articles',
         'articles': articles
     }
-
+    # return the manage page
     return render(request, 'website/manageArticle.html', context)
 
 # Same thing as above but filtered to a specific class
