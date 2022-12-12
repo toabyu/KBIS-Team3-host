@@ -5,9 +5,22 @@ Based on the manageArticles and manageClassArticles views
 -->
 
 {% block content %}
-<h1>Manage Article</h1>
+<h1>Manage Article's for {{classID}}</h1>
 
-<!--
-    A FORM GOES HERE
--->
+<button onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
+
+{% for article in articles %}
+    <div>
+        {{article}}
+        <br>
+        <button onclick="location.href='/editArticle/{{article.id}}'">Edit Article</button>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{article.id}}" name="deleteArticleID">
+            <input type="submit" value="Delete Article">
+        </form>
+    </div>
+{% endfor %}
+
+
 {% endblock %}
