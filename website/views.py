@@ -60,7 +60,35 @@ def addArticle(request):
         #This page will allow an authorized user to create a new article
         return render(request, 'website/addArticle.html')
     else:
-        pass
+        # If it isn't get it must be post.
+        # grab first and last name
+        fName = request.POST["first_name"]
+        lName = request.POST["last_name"]
+        # check if the author already exists
+        if len(Author.objects.filter(first_name=fName, last_name=lName)):
+            # if it does grab the author
+            author = Author.objects.get(first_name=fName, last_name = lName)
+        else:
+            # if it doesn't exist create a new author
+            author = Author()
+            # set new author first and last names
+            author.first_name = fName.lower()
+            author.last_name = lName.lower()
+            author.save()
+        # make a new article
+        article = Article()
+        article.author = author
+        article.title = request.POST["title"].lower()
+        article.description = request.POST["description"]
+        # split up the text by paragraph.
+        array = request.POST["content"].split("\n")
+        for i in array:
+            p = Paragraph()
+            p.content = i
+            p.article = article
+            p.save()
+        article.save()
+        return viewArticle(request,article.id)
 
 # Allow auth user to add a specific class related article
 def addClassArticle(request,classID):
