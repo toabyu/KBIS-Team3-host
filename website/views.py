@@ -80,9 +80,19 @@ def manageArticles(request):
 
 # Same thing as above but filtered to a specific class
 def manageClassArticles(request, classID):
-    #This page will display all the articles related to "+classID+" with an add button at the top and edit 
-    #and delete buttons for each article
+    # This page will display all the articles related to "+classID+" with 
+    # an add button at the top 
+    # and edit and delete buttons for each article
+    
+    # handles deleting an article that the user chooses to delete
+    if request.method == "POST":
+        deleteArticleID = request.POST["deleteArticleID"]
+        Article.objects.filter(id=deleteArticleID).delete()
+
+    articles = Article.objects.all().filter(classID=classID)
+    
     context = {
         'classID': classID,
+        'articles': articles
     }
     return render(request, 'website/manageArticle.html', context)
