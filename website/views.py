@@ -39,13 +39,16 @@ def viewClass(request, classID):
 
 # page to render articles
 def viewArticle(request, articleID):
+    # get the article
     data = Article.objects.get(id=articleID)
+    # get the paragraphs
     content = Paragraph.objects.filter(article=articleID)
     #This is page will display an article that corresponds with articleID: "+str(articleID)
     context = {
         "data":data,
         "content":content
     }
+    # render the page
     return render(request, 'website/article.html', context)
 
 # page to allow auth users to add articles
