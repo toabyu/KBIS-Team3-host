@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 <!--
 Displays an article from the viewArticle view
 -->
-
+{% block title %}{{data.title}}{% endblock title %}
 {% block content %}
-<h1>Article</h1>
+<h1>{{data.title}}</h1>
+<h3>Author:{{data.author}}</h3>
+<h5><i>{{data.description}}</i></h5>
+{% for p in content %}
+<p>{{p.content}}</p>
+{% endfor %}
 {% endblock %}

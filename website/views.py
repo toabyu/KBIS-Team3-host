@@ -39,9 +39,12 @@ def viewClass(request, classID):
 
 # page to render articles
 def viewArticle(request, articleID):
+    data = Article.objects.get(id=articleID)
+    content = Paragraph.objects.filter(article=articleID)
     #This is page will display an article that corresponds with articleID: "+str(articleID)
     context = {
-        'articleID': articleID,
+        "data":data,
+        "content":content
     }
     return render(request, 'website/article.html', context)
 
