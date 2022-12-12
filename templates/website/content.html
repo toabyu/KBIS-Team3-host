@@ -14,7 +14,7 @@ Displays our content and viewClass views
     </thead>
 {% for article in data %}
 
-<tr onclick="nav('{% url "ViewArticle" articleID=article.id%}')">
+<tr style="cursor: pointer;" onclick="nav('{% url "ViewArticle" articleID=article.id%}')">
     <td>{{article.author|title}}</td>
     <td>{{article.title}}</td>
     <td>{{article.classID|upper}}</td>
