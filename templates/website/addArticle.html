@@ -12,8 +12,27 @@ Contains the form that lets us add a new article via the addArticle and addClass
 
     - textbox for author name
     - textbox for title
-    - textfield for description
+    - textbox for description
     - textfield for article content
 
 -->
+<form name="form" method="post" action="{% url 'Add Article' %}">
+    {% csrf_token %}
+    <label for="first_name">Enter the author's first name:</label>
+    <input id="first_name" type="text" name="first_name">
+    <br><br>
+    <label for='last_name'>Enter the author's last name:</label>
+    <input type="text" name='last_name' id='last_name'> 
+    <br><br> 
+    <label for='title'>Enter the article's Title:</label>
+    <input type="text" name='title' id='title'> 
+    <br><br> 
+    <label for='description'>Enter the article's description:</label>
+    <input type="text" name='description' id='description'> 
+    <br><br>
+    <label for="content">Enter the full article here:</label>
+    <textarea name="content" id="content"></textarea>
+    <input type="submit" value="Save">
+</form>   
+
 {% endblock %}
