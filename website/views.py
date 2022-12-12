@@ -82,7 +82,7 @@ def addArticle(request):
         article.author = author
         article.title = request.POST["title"].lower()
         article.description = request.POST["description"]
-        # article.classID = request.POST["classID"].upper()
+        article.classID = request.POST["classID"].upper()
         # save the article
         article.save()
         # split up the text by paragraph.
