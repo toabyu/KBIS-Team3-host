@@ -97,8 +97,51 @@ def addClassArticle(request,classID):
 
 # Allow auth user to edit articles
 def editArticle(request,articleID):
-    #This page will allow an authorized user to edit article # "+str(articleID)
-    return render(request, 'website/editArticle.html')
+    # This page will allow an authorized user to edit article # "+str(articleID)
+
+    if request.method =="POST":
+        # save the edits
+        # grab first and last name
+        fName = request.POST["first_name"]
+        lName = request.POST["last_name"]
+        # check if the author already exists
+        if len(Author.objects.filter(first_name=fName, last_name=lName)):
+            # if it does grab the author
+            author = Author.objects.get(first_name=fName, last_name = lName)
+        else:
+            # if it doesn't exist create a new author
+            author = Author()
+            # set new author first and last names
+            author.first_name = fName.lower()
+            author.last_name = lName.lower()
+            author.save()
+        # make a new article
+        article = Article.objects.filter(id=articleID)[0]
+        article.author = author
+        article.title = request.POST["title"].lower()
+        article.description = request.POST["description"]
+
+        # delete all paragraphs, since we will add them all again below with the new edits
+        Paragraph.objects.filter(article=article).delete()
+
+        # split up the text by paragraph.
+        array = request.POST["content"].split("\n")
+        for i in array:
+            p = Paragraph()
+            p.content = i
+            p.article = article
+            p.save()
+        article.save()
+
+    article = Article.objects.filter(id=articleID)[0]
+    content = Paragraph.objects.filter(article=article)
+    
+    context = {
+        'title': f"Edit Article \"{article}\"",
+        'article': article,
+        'content': content
+    }
+    return render(request, 'website/editArticle.html', context)
 
 # allow auth user to view all articles with buttons to add, edit, and delete
 def manageArticles(request):
