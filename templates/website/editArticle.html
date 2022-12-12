@@ -5,9 +5,10 @@ change the info and save it.
 From the editArticle view
 -->
 
+{% block title %}{{title}}{% endblock title %}
 
 {% block content %}
-<h1>Edit Article</h1>
+<h1>Edit Article "{{article}}"</h1>
 
 <!--
     A FORM GOES HERE
@@ -18,4 +19,27 @@ From the editArticle view
     - textfield for description
     - textfield for article content
 -->
+
+<form name="form" method="post">
+    {% csrf_token %}
+    <label for="first_name">Enter the author's first name:</label>
+    <input id="first_name" type="text" name="first_name" value="{{article.author.first_name}}">
+    <br><br>
+    <label for='last_name'>Enter the author's last name:</label>
+    <input type="text" name='last_name' id='last_name' value="{{article.author.last_name}}"> 
+    <br><br> 
+    <label for='title'>Enter the article's Title:</label>
+    <input type="text" name='title' id='title' value="{{article.title}}"> 
+    <br><br> 
+    <label for='description'>Enter the article's description:</label>
+    <input type="text" name='description' id='description' value="{{article.description}}"> 
+    <br><br>
+    <label for="content">Enter the full article here:</label>
+<textarea name="content" id="content">
+{% for p in content %}
+{{p.content}}
+{% endfor %}
+</textarea>
+    <input type="submit" value="Save">
+</form>   
 {% endblock %}
