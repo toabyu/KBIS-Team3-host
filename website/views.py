@@ -30,8 +30,10 @@ def content(request):
 # Class specific content
 def viewClass(request, classID):
     #This will show a table that correspods with the class with id = "+classID
+    data = Article.objects.filter(classID=classID.upper()).order_by("title")
     context = {
-        'classID': classID,
+        'title':"View "+classID.upper()+" Articles",
+        'data': data
     }
     return render(request, 'website/content.html', context)
 
