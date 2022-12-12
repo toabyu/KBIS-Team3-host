@@ -39,19 +39,28 @@ def viewClass(request, classID):
 
 # page to render articles
 def viewArticle(request, articleID):
+    # get the article
     data = Article.objects.get(id=articleID)
+    # get the paragraphs
     content = Paragraph.objects.filter(article=articleID)
     #This is page will display an article that corresponds with articleID: "+str(articleID)
     context = {
         "data":data,
         "content":content
     }
+    # render the page
     return render(request, 'website/article.html', context)
 
 # page to allow auth users to add articles
 def addArticle(request):
-    #This page will allow an authorized user to create a new article
-    return render(request, 'website/addArticle.html')
+    # This allows us to use the same route (get and post). 
+    # Get will give them the page
+    # Post will post the article to the DB and return the class page
+    if request.method == "GET":
+        #This page will allow an authorized user to create a new article
+        return render(request, 'website/addArticle.html')
+    else:
+        pass
 
 # Allow auth user to add a specific class related article
 def addClassArticle(request,classID):
