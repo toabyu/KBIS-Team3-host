@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{title}}{% endblock title %}
 <!--
 Displays our content and viewClass views
@@ -14,15 +15,18 @@ Displays our content and viewClass views
 {% for article in data %}
 
 <tr onclick="nav('{% url "ViewArticle" articleID=article.id%}')">
-    <td>{{article.author}}</td>
+    <td>{{article.author|title}}</td>
     <td>{{article.title}}</td>
-    <td>{{article.classID}}</td>
+    <td>{{article.classID|upper}}</td>
 </tr>
 
 {% endfor %}
 </table>
 <script>
     function nav(location){
+        //navigate to the href provided(this will update based on the passed url so links still aren't static
+        //and will change based on route names)
+        //if you aren't convinced inspect the page
         window.location.href = location;
     }
 </script>
