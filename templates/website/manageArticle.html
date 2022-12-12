@@ -5,22 +5,46 @@ Based on the manageArticles and manageClassArticles views
 -->
 
 {% block content %}
-<h1>Manage Article's for {{classID}}</h1>
 
+{% if classID %}
+<h1>Manage Articles for {{classID}}</h1>
+{% else %}
+<h1>Manage Articles</h1>
+{% endif %}
+
+
+{% if classID %}
 <button onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
+{% else %}
+<button onclick="location.href='/addArticle'">Add Article</button>
+{% endif %}
 
-{% for article in articles %}
-    <div>
-        {{article}}
-        <br>
-        <button onclick="location.href='/editArticle/{{article.id}}'">Edit Article</button>
-        <form method="post">
-            {% csrf_token %}
-            <input type="hidden" value="{{article.id}}" name="deleteArticleID">
-            <input type="submit" value="Delete Article">
-        </form>
-    </div>
-{% endfor %}
-
+<table>
+    <th>
+        <tr>
+            <td></td>
+            <td>Author</td>
+            <td>Title</td>
+            <td>Class</td>
+            <td></td>
+        </tr>
+    </th>
+    {% for article in articles %}
+        <tr>
+            <td><button onclick="location.href='/editArticle/{{article.id}}'">Edit Article</button></td>
+            <td>{{article.author}}</td>
+            <td>{{article}}</td>
+            <td>{{article.classID}}</td>
+            
+            <td>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{article.id}}" name="deleteArticleID">
+                    <input type="submit" value="Delete Article">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

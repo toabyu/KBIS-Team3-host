@@ -75,8 +75,20 @@ def editArticle(request,articleID):
 # allow auth user to view all articles with buttons to add, edit, and delete
 def manageArticles(request):
     #This page will display a table of all the articles on the site with an 
-    #add button at the top and edit and delete buttons for each article
-    return render(request, 'website/manageArticle.html')
+    # add button at the top and edit and delete buttons for each article
+
+    # handles deleting an article that the user chooses to delete
+    if request.method == "POST":
+        deleteArticleID = request.POST["deleteArticleID"]
+        Article.objects.filter(id=deleteArticleID).delete()
+
+    articles = Article.objects.all()
+    
+    context = {
+        'articles': articles
+    }
+
+    return render(request, 'website/manageArticle.html', context)
 
 # Same thing as above but filtered to a specific class
 def manageClassArticles(request, classID):
