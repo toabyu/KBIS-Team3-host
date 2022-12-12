@@ -5,6 +5,7 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Author, Article, Paragraph
 # Create your views here.
 
 # Home page
@@ -17,8 +18,14 @@ def about(request):
 
 # Content page with all content
 def content(request):
-    #This is the content page showing a table of all the articles order by class ID
-    return render(request, 'website/content.html')
+    # get all the articles
+    data = Article.objects.all().order_by("classID")
+    context = {
+        "title":"View All Articles",
+        "data":data
+    }
+    #This is the content page showing a table of all the articles ordered by class ID
+    return render(request, 'website/content.html', context)
 
 # Class specific content
 def viewClass(request, classID):

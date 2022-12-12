@@ -1,8 +1,29 @@
 {% extends 'base.html' %}
+{% block title %}{{title}}{% endblock title %}
 <!--
 Displays our content and viewClass views
 -->
 
 {% block content %}
-<h1>Content</h1>
+<table>
+    <thead>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Class</th>
+    </thead>
+{% for article in data %}
+
+<tr onclick="nav('{% url "ViewArticle" articleID=article.id%}')">
+    <td>{{article.author}}</td>
+    <td>{{article.title}}</td>
+    <td>{{article.classID}}</td>
+</tr>
+
+{% endfor %}
+</table>
+<script>
+    function nav(location){
+        window.location.href = location;
+    }
+</script>
 {% endblock %}
