@@ -305,6 +305,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  font-size: 18px
 }
 
 caption {
@@ -317,6 +318,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  font-size: 22px;
 }
 
 thead,
@@ -11525,3 +11527,4 @@ html {
   margin-left: 75px;
   margin-right: 75px
 }
+

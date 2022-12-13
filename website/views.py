@@ -68,7 +68,8 @@ def viewClass(request, classID):
     # set context
     context = {
         'title':"View "+classID.upper()+" Articles",
-        'data': data
+        'data': data,
+        'heading': classID.upper()+" Articles"
     }
     # return the page
     return render(request, 'website/content.html', context)

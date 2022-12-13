@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}{{title}}{% endblock title %}
+{% block heading%}{{heading}}{% endblock heading %}
 <!--
 Displays our content and viewClass views
 -->
 
 {% block content %}
-<table>
+<table class="table table-bordered">
     <thead>
         <th>Author</th>
         <th>Title</th>
