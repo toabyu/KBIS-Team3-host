@@ -55,7 +55,7 @@ def content(request):
     # get all the articles
     data = Article.objects.all().order_by("classID")
     context = {
-        "title":"View All Articles",
+        "title":"All",
         "data":data,
         "classID":"assets/img/is.png"
     }
@@ -68,7 +68,7 @@ def viewClass(request, classID):
     data = Article.objects.filter(classID=classID.upper()).order_by("title")
     # set context
     context = {
-        'title':"View "+classID.upper()+" Articles",
+        'title':classID.upper(),
         'data': data,
         'heading': classID.upper()+" Articles",
         "classID":"assets/img/"+str(classID)+".png"
