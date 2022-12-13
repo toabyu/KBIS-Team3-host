@@ -244,7 +244,7 @@ def manageClassArticles(request, classID):
             deleteArticleID = request.POST["deleteArticleID"]
             Article.objects.filter(id=deleteArticleID).delete()
 
-        articles = Article.objects.all().filter(classID=classID)
+        articles = Article.objects.filter(classID = classID.upper())
         
         context = {
             'title': f'Manage {classID} Articles',
