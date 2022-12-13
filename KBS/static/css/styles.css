@@ -11534,3 +11534,8 @@ html {
   margin-left: 15px;
   margin-right: 15px
 }
+
+.padding{
+  padding-left: 33%;
+  padding-right: 33%
+}

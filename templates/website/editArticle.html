@@ -8,7 +8,11 @@ From the editArticle view
 {% block title %}{{title}}{% endblock title %}
 
 {% block content %}
+<div class='padding'>
+<center>
 <h1>Edit Article "{{article}}"</h1>
+</center>
+<br>
 
 <!--
     A FORM GOES HERE
@@ -35,7 +39,12 @@ From the editArticle view
     <input type="text" name='description' id='description' value="{{article.description}}"> 
     <br><br>
     <label for="content">Enter the full article here:</label>
+    
 <textarea name="content" id="content">{% for p in content %}{{p.content}}{% endfor %}</textarea>
-    <input type="submit" value="Save">
+<br><br>
+    <input class="btn btn-xl btn-outline-dark" type="submit" value="Save">
+
 </form>   
+
+<div>
 {% endblock %}

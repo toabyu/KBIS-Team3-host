@@ -4,9 +4,13 @@
 Contains the form that lets us add a new article via the addArticle and addClassArticle views
 -->
 
-{% block content %}
-<h1>Add Article</h1>
 
+{% block content %}
+<div class='padding'>
+<center>
+<h1>ADD ARTICLE</h1>
+</center>
+<br>
 <!--
     A FORM GOES HERE
 
@@ -40,7 +44,11 @@ Contains the form that lets us add a new article via the addArticle and addClass
     <br><br>
     <label for="content">Enter the full article here:</label>
     <textarea name="content" id="content"></textarea>
-    <input type="submit" value="Save">
+    <br>
+    <br>
+    <center>
+    <input class="btn btn-xl btn-outline-dark" type="submit" value="Save">
+    </center>
 </form>   
-
+</div>
 {% endblock %}

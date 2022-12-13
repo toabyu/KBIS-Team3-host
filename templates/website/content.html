@@ -8,11 +8,13 @@ Displays our content and viewClass views
 {% block headingimage %}{% static classID %}{% endblock headingimage %}
 {% block content %}
 <table class="table table-bordered">
+
     <thead>
         <th>Author</th>
         <th>Title</th>
         <th>Class</th>
     </thead>
+
 {% for article in data %}
 
 <tr style="cursor: pointer;" onclick="nav('{% url "ViewArticle" articleID=article.id%}')">
