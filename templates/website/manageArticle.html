@@ -5,6 +5,7 @@ Based on the manageArticles and manageClassArticles views
 -->
 
 {% block title %}{{title}}{% endblock title %}
+{% block heading%}{{heading}}{% endblock heading %}
 
 {% block content %}
 
@@ -14,13 +15,15 @@ Based on the manageArticles and manageClassArticles views
 <h1>Manage Articles</h1>
 {% endif %}
 
-
+<center>
 {% if classID %}
-<button onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
+<button class="btn btn-xl btn-outline-dark" onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
 {% else %}
-<button onclick="location.href='/addArticle'">Add Article</button>
+<button class="btn btn-xl btn-outline-dark" onclick="location.href='/addArticle'">Add Article</button>
 {% endif %}
-
+</center>
+<br>
+<br>
 <table class="table table-bordered">
     <th>
         <tr>

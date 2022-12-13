@@ -6,7 +6,6 @@
 Displays our content and viewClass views
 -->
 {% block headingimage %}{% static classID %}{% endblock headingimage %}
-{% block heading %}{{title}}{% endblock heading %}
 {% block content %}
 <table class="table table-bordered">
     <thead>
@@ -32,4 +31,32 @@ Displays our content and viewClass views
         window.location.href = location;
     }
 </script>
+<center>
+<div>
+    <div class="text-center mt-4" id = 'buttonemily2'>
+        
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is401" %}">
+            IS 401
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id= 'buttonemily2'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is402" %}">
+            IS 402
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id = 'buttonemily2'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is403" %}">
+            IS 403
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id='buttonemily2'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is415" %}">
+            IS 415
+        </a>
+    </div>
+    </div>
+</center>
 {% endblock %}
