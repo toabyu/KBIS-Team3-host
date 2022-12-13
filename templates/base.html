@@ -45,7 +45,7 @@ Contains all the base elements on every page
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="{% block headingimage %}{% endblock headingimage %}" alt="..." />
+                <img class="masthead-avatar mb-5" src="{% block headingimage %}{% static 'assets/img/is.png' %}{% endblock headingimage %}" alt="..." />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">{% block heading %}{% endblock heading %}</h1>
             </div>
