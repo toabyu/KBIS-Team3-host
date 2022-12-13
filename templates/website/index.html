@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 <!--
 Displays our home page
 -->
 {% block title %}Home{% endblock title %}
-{% block headingimage %}<img class="masthead-avatar mb-5" src="static/assets/img/is2-transformed.png" alt="..." />{% endblock headingimage %}
+{% block headingimage %}{% static 'assets/img/is.png' %}{% endblock headingimage %}
 {% block heading%}Knowledge Base of<br>Information Systems{% endblock heading %}
 
 
