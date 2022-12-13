@@ -70,7 +70,9 @@ def viewClass(request, classID):
     context = {
         'title':"View "+classID.upper()+" Articles",
         'data': data,
+        'heading': classID.upper()+" Articles",
         "classID":"assets/img/"+str(classID)+".png"
+
     }
     # return the page
     return render(request, 'website/content.html', context)
