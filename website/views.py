@@ -125,7 +125,7 @@ def addArticle(request):
             # make a new article
             article = Article()
             article.author = author
-            article.title = request.POST["title"].lower()
+            article.title = request.POST["title"]
             article.description = request.POST["description"]
             article.classID = request.POST["classID"].upper()
             # save the article
@@ -189,7 +189,7 @@ def editArticle(request,articleID):
             # make a new article
             article = Article.objects.filter(id=articleID)[0]
             article.author = author
-            article.title = request.POST["title"].lower()
+            article.title = request.POST["title"]
             article.description = request.POST["description"]
             article.classID = request.POST["classID"].upper()
 
