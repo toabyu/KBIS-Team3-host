@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 <!--
 Contains a pre-populated form with all the info of an article and lets us
 change the info and save it.
@@ -27,11 +28,36 @@ From the editArticle view
 <form name="form" method="post">
     {% csrf_token %}
     <label for="first_name">Enter the author's first name:</label>
-    <input id="first_name" type="text" name="first_name" value="{{article.author.first_name}}">
+    <input id="first_name" type="text" name="first_name" value="{{article.author.first_name|title}}">
     <br><br>
     <label for='last_name'>Enter the author's last name:</label>
-    <input type="text" name='last_name' id='last_name' value="{{article.author.last_name}}"> 
+    <input type="text" name='last_name' id='last_name' value="{{article.author.last_name|title}}"> 
     <br><br> 
+    <label for="classID">Select the class the article is for:</label>
+    <select name="classID" id="classID">
+        {% if id == "IS401" %}
+        <option value="IS401" selected>IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option valuese="IS403">IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% elif id == "IS402"%}
+        <option value="IS401">IS 401</option>
+        <option value="IS402" selected>IS 402</option>
+        <option value="IS403">IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% elif id == "IS403"%}
+        <option value="IS401">IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option value="IS403"selected>IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% else %}
+        <option value="IS401">IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option value="IS403">IS 403</option>
+        <option value="IS415" selected>IS 415</option>
+        {% endif %}
+    </select>
+    <br><br>
     <label for='title'>Enter the article's Title:</label>
     <input type="text" name='title' id='title' value="{{article.title}}"> 
     <br><br> 

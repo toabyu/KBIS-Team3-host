@@ -29,12 +29,38 @@ Contains the form that lets us add a new article via the addArticle and addClass
     <input type="text" name='last_name' id='last_name'> 
     <br><br> 
     <label for="classID">Select the class the article is for:</label>
+    {% if not classID%}
     <select name="classID" id="classID">
         <option value="IS401">IS 401</option>
         <option value="IS402">IS 402</option>
         <option value="IS403">IS 403</option>
         <option value="IS415">IS 415</option>
     </select>
+    {% else %}
+    <select name="classID" id="classID">
+        {% if classID == "IS401" %}
+        <option value="IS401" selected>IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option valuese="IS403">IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% elif classID == "IS402"%}
+        <option value="IS401">IS 401</option>
+        <option value="IS402" selected>IS 402</option>
+        <option value="IS403">IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% elif classID == "IS403"%}
+        <option value="IS401">IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option value="IS403"selected>IS 403</option>
+        <option value="IS415">IS 415</option>
+        {% else %}
+        <option value="IS401">IS 401</option>
+        <option value="IS402">IS 402</option>
+        <option value="IS403">IS 403</option>
+        <option value="IS415" selected>IS 415</option>
+        {% endif %}
+    </select>
+    {% endif %}
     <br><br>
     <label for='title'>Enter the article's Title:</label>
     <input type="text" name='title' id='title'> 

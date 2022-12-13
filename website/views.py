@@ -184,6 +184,7 @@ def editArticle(request,articleID):
             article.author = author
             article.title = request.POST["title"].lower()
             article.description = request.POST["description"]
+            article.classID = request.POST["classID"].upper()
 
             # delete all paragraphs, since we will add them all again below with the new edits
             Paragraph.objects.filter(article=article).delete()
@@ -204,7 +205,8 @@ def editArticle(request,articleID):
             context = {
                 'title': f"Edit Article \"{article}\"",
                 'article': article,
-                'content': content
+                'content': content,
+                'id':article.classID
             }
             return render(request, 'website/editArticle.html', context)
     else:
