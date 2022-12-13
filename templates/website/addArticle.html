@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 <!--
 Contains the form that lets us add a new article via the addArticle and addClassArticle views
 -->
@@ -11,15 +11,6 @@ Contains the form that lets us add a new article via the addArticle and addClass
 <h1>ADD ARTICLE</h1>
 </center>
 <br>
-<!--
-    A FORM GOES HERE
-
-    - textbox for author name
-    - textbox for title
-    - textbox for description
-    - textfield for article content
-
--->
 <form name="form" method="post" action="{% url 'Add Article' %}">
     {% csrf_token %}
     <label for="first_name">Enter the author's first name:</label>
