@@ -99,10 +99,10 @@ def addArticle(request):
         else:
             # If it isn't get it must be post.
             # grab first and last name
-            fName = request.POST["first_name"]
-            lName = request.POST["last_name"]
+            fName = request.POST["first_name"].lower()
+            lName = request.POST["last_name"].lower()
             # check if the author already exists
-            if len(Author.objects.filter(first_name=fName, last_name=lName)):
+            if len(Author.objects.filter(first_name=fName, last_name=lName))>0:
                 # if it does grab the author
                 author = Author.objects.get(first_name=fName, last_name = lName)
             else:
@@ -162,10 +162,10 @@ def editArticle(request,articleID):
         if request.method =="POST":
             # save the edits
             # grab first and last name
-            fName = request.POST["first_name"]
-            lName = request.POST["last_name"]
+            fName = request.POST["first_name"].lower()
+            lName = request.POST["last_name"].lower()
             # check if the author already exists
-            if len(Author.objects.filter(first_name=fName, last_name=lName)):
+            if len(Author.objects.filter(first_name=fName, last_name=lName))>0:
                 # if it does grab the author
                 author = Author.objects.get(first_name=fName, last_name = lName)
             else:
@@ -193,7 +193,7 @@ def editArticle(request,articleID):
                 p.save()
             article.save()
 
-        article = Article.objects.filter(id=articleID)[0]
+        article = Article.objects.get(id=articleID)
         content = Paragraph.objects.filter(article=article)
         
         context = {
