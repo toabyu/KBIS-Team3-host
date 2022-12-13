@@ -21,22 +21,25 @@ Based on the manageArticles and manageClassArticles views
 <button onclick="location.href='/addArticle'">Add Article</button>
 {% endif %}
 
-<table>
+<table class="table table-bordered">
     <th>
         <tr>
-            <td></td>
+
             <td>Author</td>
             <td>Title</td>
             <td>Class</td>
             <td></td>
+            <td></td>
+
         </tr>
     </th>
     {% for article in articles %}
         <tr>
-            <td><button onclick="location.href='/editArticle/{{article.id}}'">Edit Article</button></td>
+            
             <td>{{article.author|title}}</td>
             <td>{{article}}</td>
             <td>{{article.classID|upper}}</td>
+            <td><button onclick="location.href='/editArticle/{{article.id}}'">Edit Article</button></td>
             
             <td>
                 <form method="post">
