@@ -56,7 +56,8 @@ def content(request):
     data = Article.objects.all().order_by("classID")
     context = {
         "title":"View All Articles",
-        "data":data
+        "data":data,
+        "classID":"assets/img/is.png"
     }
     #This is the content page showing a table of all the articles ordered by class ID
     return render(request, 'website/content.html', context)
@@ -69,7 +70,9 @@ def viewClass(request, classID):
     context = {
         'title':"View "+classID.upper()+" Articles",
         'data': data,
-        'heading': classID.upper()+" Articles"
+        'heading': classID.upper()+" Articles",
+        "classID":"assets/img/"+str(classID)+".png"
+
     }
     # return the page
     return render(request, 'website/content.html', context)
