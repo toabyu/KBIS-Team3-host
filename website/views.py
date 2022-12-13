@@ -16,10 +16,10 @@ def login(request):
     # let the user login
     global authUser
     if request.method == "POST":
-        if request.POST["uname"].lower() == username.lower() and request.POST["pwd"] == password:
+        if request.POST["uname"].lower() == username.lower() and request.POST["psw"] == password:
             # if it is then login and return manage page
             authUser = True
-            return manageArticles(request)
+            return index(request)
         else:
             # otherwise leave them logged out
             authUser = False
