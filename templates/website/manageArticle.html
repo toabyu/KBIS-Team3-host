@@ -5,7 +5,9 @@ Based on the manageArticles and manageClassArticles views
 -->
 
 {% block title %}{{title}}{% endblock title %}
+
 {% block logout %}<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}">Log Out</a></li>{% endblock logout %}
+
 {% block content %}
 
 {% if classID %}
@@ -14,13 +16,15 @@ Based on the manageArticles and manageClassArticles views
 <h1>Manage Articles</h1>
 {% endif %}
 
-
+<center>
 {% if classID %}
-<button onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
+<button class="btn btn-xl btn-outline-dark" onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
 {% else %}
-<button onclick="location.href='/addArticle'">Add Article</button>
+<button class="btn btn-xl btn-outline-dark" onclick="location.href='/addArticle'">Add Article</button>
 {% endif %}
-
+</center>
+<br>
+<br>
 <table class="table table-bordered">
     <th>
         <tr>

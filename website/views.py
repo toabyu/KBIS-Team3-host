@@ -223,7 +223,8 @@ def manageArticles(request):
         
         context = {
             'title': 'Manage All Articles',
-            'articles': articles
+            'articles': articles,
+            'heading': 'Manage All Articles'
         }
         # return the manage page
         return render(request, 'website/manageArticle.html', context)
