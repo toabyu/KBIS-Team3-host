@@ -3,8 +3,73 @@
 Displays our home page
 -->
 {% block title %}Home{% endblock title %}
+{% block headingimage %}static/assets/img/is2-transformed.png{% endblock headingimage %}
+{% block heading%}Knowledge Base of<br>Information Systems{% endblock heading %}
+
+
+
+
 
 {% block content %}
-<h1>Index</h1>
+
+<section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <h2 class="page-section-heading  text-center text-secondary mb-0">View articles to help with <br>IS 401, 402, 403, and 415. </h2>
+        </div>
+</section>
+
+
+<center>
+<div>
+<div class="text-center mt-4" id = 'imageemily'>
+    <img src="static/assets/img/is401.png">
+</div>
+
+<div class="text-center mt-4" id= 'imageemily'>
+    <img src="static/assets/img/is402.png">
+</div>
+
+<div class="text-center mt-4" id = 'imageemily'>
+    <img src="static/assets/img/is403.png">
+</div>
+
+<div class="text-center mt-4" id='imageemily'>
+    <img src="static/assets/img/is415.png">
+</div>
+</div>
+
+
+
+<div>
+    <div class="text-center mt-4" id = 'buttonemily'>
+        
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is401" %}">
+            IS 401
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id= 'buttonemily'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is402" %}">
+            IS 402
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id = 'buttonemily'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is403" %}">
+            IS 403
+        </a>
+    </div>
+    
+    <div class="text-center mt-4" id='buttonemily'>
+        <a class="btn btn-xl btn-outline-dark" href="{% url "ClassContent" classID="is415" %}">
+            IS 415
+        </a>
+    </div>
+    </div>
+</center>
+<br>
+<br>
+
 
 {% endblock %}
