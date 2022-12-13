@@ -10,12 +10,14 @@ Based on the manageArticles and manageClassArticles views
 
 {% block content %}
 
+<center>
 {% if classID %}
 <h1>Manage Articles for {{classID}}</h1>
 {% else %}
-<h1>Manage Articles</h1>
+<h1>MANANGE ARTICLES</h1>
 {% endif %}
-
+</center>
+<br>
 <center>
 {% if classID %}
 <button class="btn btn-xl btn-outline-dark" onclick="location.href='/addArticle/{{classID}}'">Add Article</button>
@@ -55,5 +57,34 @@ Based on the manageArticles and manageClassArticles views
         </tr>
     {% endfor %}
 </table>
+
+<center>
+    <div>
+        <div class="text-center mt-4" id = 'buttonemily2'>
+            
+            <a class="btn btn-xl btn-outline-dark" href="{% url "manageClass" classID="is401" %}">
+                IS 401
+            </a>
+        </div>
+        
+        <div class="text-center mt-4" id= 'buttonemily2'>
+            <a class="btn btn-xl btn-outline-dark" href="{% url "manageClass" classID="is402" %}">
+                IS 402
+            </a>
+        </div>
+        
+        <div class="text-center mt-4" id = 'buttonemily2'>
+            <a class="btn btn-xl btn-outline-dark" href="{% url "manageClass" classID="is403" %}">
+                IS 403
+            </a>
+        </div>
+        
+        <div class="text-center mt-4" id='buttonemily2'>
+            <a class="btn btn-xl btn-outline-dark" href="{% url "manageClass" classID="is415" %}">
+                IS 415
+            </a>
+        </div>
+        </div>
+    </center>
 
 {% endblock %}

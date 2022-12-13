@@ -8,7 +8,11 @@ From the editArticle view
 {% block title %}{{title}}{% endblock title %}
 
 {% block content %}
+<div class='padding'>
+<center>
 <h1>Edit Article "{{article}}"</h1>
+</center>
+<br>
 
 <!--
     A FORM GOES HERE
@@ -40,6 +44,12 @@ From the editArticle view
 {{p.content}}
 {% endfor %}
 </textarea>
-    <input type="submit" value="Save">
+<br>
+<br>
+    <center>
+    <input class="btn btn-xl btn-outline-dark" type="submit" value="Save">
+    </center>
 </form>   
+
+<div>
 {% endblock %}
