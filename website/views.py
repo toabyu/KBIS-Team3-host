@@ -3,8 +3,11 @@
 # Project Description: A useful website to serve as a class reference for students in the core.
 
 # shortcut login
+# If/When we actually build a full verion we will use django-login
+# For now this will have to do
 username = "is403"
 password = "python"
+# set the user to logged out to start
 authUser = False
 
 from django.shortcuts import render
@@ -15,7 +18,9 @@ from .models import Author, Article, Paragraph
 def login(request):
     # let the user login
     global authUser
+    # make sure they log in on a POST not a get
     if request.method == "POST":
+        # if the username and password are correct:
         if request.POST["uname"].lower() == username.lower() and request.POST["psw"] == password:
             # if it is then login and return manage page
             authUser = True
@@ -26,6 +31,7 @@ def login(request):
             # return the login page
             return loginView(request)
     else:
+        # return the login page and make them do a post not a get
         return loginView(request)
 
 # login route
@@ -163,6 +169,7 @@ def addClassArticle(request,classID):
 def editArticle(request,articleID):
     # This page will allow an authorized user to edit article # "+str(articleID)
     if authUser:
+        # if it is post save edits
         if request.method =="POST":
             # save the edits
             # grab first and last name
@@ -199,15 +206,20 @@ def editArticle(request,articleID):
             article.save()
             return viewArticle(request,articleID)
         else:
+            # if it isn't post it must be get. In that case render the page
+
+            # grab all the appropriate data
             article = Article.objects.get(id=articleID)
             content = Paragraph.objects.filter(article=article)
             
+            # create the context
             context = {
                 'title': f"Edit Article \"{article}\"",
                 'article': article,
                 'content': content,
                 'id':article.classID
             }
+            # render
             return render(request, 'website/editArticle.html', context)
     else:
         return loginView(request)
