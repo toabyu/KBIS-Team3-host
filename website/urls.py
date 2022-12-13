@@ -4,10 +4,12 @@
 
 from django.urls import path
 from .views import index, about, content, viewClass, viewArticle, addArticle, editArticle, manageArticles, manageClassArticles, addClassArticle,login
+from .views import logout
 # Here are all the paths. See the views folder for specifics
 urlpatterns = [
     path("", index, name="Index"),
     path("login",login,name="login"),
+    path("logout",logout,name="logout"),
     path("about", about, name="About"),
     path("content", content, name="Content"),
     path("content/<str:classID>", viewClass, name="ClassContent"),
