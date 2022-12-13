@@ -39,16 +39,11 @@ From the editArticle view
     <input type="text" name='description' id='description' value="{{article.description}}"> 
     <br><br>
     <label for="content">Enter the full article here:</label>
-<textarea name="content" id="content">
-{% for p in content %}
-{{p.content}}
-{% endfor %}
-</textarea>
-<br>
-<br>
-    <center>
+    
+<textarea name="content" id="content">{% for p in content %}{{p.content}}{% endfor %}</textarea>
+<br><br>
     <input class="btn btn-xl btn-outline-dark" type="submit" value="Save">
-    </center>
+
 </form>   
 
 <div>

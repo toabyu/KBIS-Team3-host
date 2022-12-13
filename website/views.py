@@ -196,16 +196,17 @@ def editArticle(request,articleID):
                 p.article = article
                 p.save()
             article.save()
-
-        article = Article.objects.get(id=articleID)
-        content = Paragraph.objects.filter(article=article)
-        
-        context = {
-            'title': f"Edit Article \"{article}\"",
-            'article': article,
-            'content': content
-        }
-        return render(request, 'website/editArticle.html', context)
+            return viewArticle(request,articleID)
+        else:
+            article = Article.objects.get(id=articleID)
+            content = Paragraph.objects.filter(article=article)
+            
+            context = {
+                'title': f"Edit Article \"{article}\"",
+                'article': article,
+                'content': content
+            }
+            return render(request, 'website/editArticle.html', context)
     else:
         return loginView(request)
 # allow auth user to view all articles with buttons to add, edit, and delete
